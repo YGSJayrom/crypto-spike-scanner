@@ -6,9 +6,6 @@ API_KEY = "CG-7dmjAuZuHAFT1pv5pxyPW7ZL"
 
 def fetch_data():
     url = "https://api.coingecko.com/api/v3/coins/markets"
-    headers = {
-        "x-cg-pro-api-key": API_KEY
-    }
     params = {
         'vs_currency': 'usd',
         'order': 'market_cap_asc',
@@ -16,17 +13,18 @@ def fetch_data():
         'page': 1,
         'price_change_percentage': '1h'
     }
-    res = requests.get(url, params=params, headers=headers)
+    res = requests.get(url, params=params)
 
     try:
         df = pd.DataFrame(res.json())
         if 'current_price' not in df.columns:
-            st.error("CoinGecko response missing expected fields. API key might be invalid or rate-limited.")
+            st.error("Still missing data. Try again later or inspect CoinGecko rate limits.")
             st.write("Returned columns:", df.columns)
         return df
     except Exception as e:
         st.error(f"Error parsing CoinGecko response: {e}")
         return pd.DataFrame()
+
 
 def detect_spikes(df):
     df = df.copy()
