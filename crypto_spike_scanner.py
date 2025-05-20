@@ -94,36 +94,33 @@ def detect_spikes(df):
     df['price_change_percentage_1h_in_currency'] = df['price_change_percentage_1h_in_currency'].astype(float)
     return df[(df['current_price'] < 0.01) & (df['price_change_percentage_1h_in_currency'] > 20)]
 
-st.markdown(
-    """
-    <style>
-        html, body, [class*="css"] {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #0e1117;
-            color: white;
-        }
-        .title {
-            text-align: center;
-            padding: 1rem;
-        }
-        .highlight {
-            background: linear-gradient(90deg, #00ffe5, #fff700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            font-size: 2.5rem;
-        }
-        .card {
-            background-color: #1c1f26;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("""
+<style>
+    html, body, [class*="css"] {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #0e1117;
+        color: white;
+    }
+    .title {
+        text-align: center;
+        padding: 1rem;
+    }
+    .highlight {
+        background: linear-gradient(90deg, #00ffe5, #fff700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+        font-size: 2.5rem;
+    }
+    .card {
+        background-color: #1c1f26;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown("<div class='title'><span class='highlight'>🚀 Penny Crypto Spike Scanner</span></div>", unsafe_allow_html=True)
 st.markdown("### Showing only coins listed on Coinbase, Crypto.com, or Webull.")
