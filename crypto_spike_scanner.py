@@ -95,7 +95,7 @@ def detect_spikes(df):
     return df[(df['current_price'] < 0.01) & (df['price_change_percentage_1h_in_currency'] > 20)]
 
 st.markdown(
-    """
+    \"\"\"
     <style>
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
@@ -121,7 +121,7 @@ st.markdown(
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
         }
     </style>
-    """,
+    \"\"\",
     unsafe_allow_html=True
 )
 
