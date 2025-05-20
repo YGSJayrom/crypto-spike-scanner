@@ -95,7 +95,7 @@ def detect_spikes(df):
     return df[(df['current_price'] < 0.01) & (df['price_change_percentage_1h_in_currency'] > 20)]
 
 st.markdown(
-    \"\"\"
+    """
     <style>
         html, body, [class*="css"] {
             font-family: 'Segoe UI', sans-serif;
@@ -121,7 +121,7 @@ st.markdown(
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
         }
     </style>
-    \"\"\",
+    """,
     unsafe_allow_html=True
 )
 
@@ -153,17 +153,16 @@ if not df.empty:
             platform_str = ", ".join(platforms)
 
             st.markdown(
-    f"""
-    <div class='card'>
-        <strong>{row['name']} ({row['symbol'].upper()})</strong><br>
-        💰 Price: ${row['current_price']:.6f}<br>
-        📈 1h Spike: {row['price_change_percentage_1h_in_currency']:.2f}%<br>
-        🌐 Available on: {platform_str}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+                f"""
+                <div class='card'>
+                    <strong>{row['name']} ({row['symbol'].upper()})</strong><br>
+                    💰 Price: ${row['current_price']:.6f}<br>
+                    📈 1h Spike: {row['price_change_percentage_1h_in_currency']:.2f}%<br>
+                    🌐 Available on: {platform_str}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
     else:
         st.info("No supported coins under $0.01 have spiked 20%+ in the last hour.")
 else:
