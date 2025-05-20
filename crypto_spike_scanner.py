@@ -94,6 +94,7 @@ def detect_spikes(df):
     df['price_change_percentage_1h_in_currency'] = df['price_change_percentage_1h_in_currency'].astype(float)
     return df[(df['current_price'] < 0.01) & (df['price_change_percentage_1h_in_currency'] > 20)]
 
+# ✅ Properly quoted CSS block
 st.markdown("""
 <style>
     html, body, [class*="css"] {
