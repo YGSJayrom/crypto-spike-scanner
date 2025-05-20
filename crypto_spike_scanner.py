@@ -153,16 +153,17 @@ if not df.empty:
             platform_str = ", ".join(platforms)
 
             st.markdown(
-                f"""
-                <div class='card'>
-                    <strong>{row['name']} ({row['symbol'].upper()})</strong><br>
-                    💰 Price: ${row['current_price']:.6f}<br>
-                    📈 1h Spike: {row['price_change_percentage_1h_in_currency']:.2f}%<br>
-                    🌐 Available on: {platform_str}
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+    f"""
+    <div class='card'>
+        <strong>{row['name']} ({row['symbol'].upper()})</strong><br>
+        💰 Price: ${row['current_price']:.6f}<br>
+        📈 1h Spike: {row['price_change_percentage_1h_in_currency']:.2f}%<br>
+        🌐 Available on: {platform_str}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
     else:
         st.info("No supported coins under $0.01 have spiked 20%+ in the last hour.")
 else:
